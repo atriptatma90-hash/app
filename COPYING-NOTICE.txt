@@ -1,0 +1,1 @@
+New DownloadVerse Android code: Copyright (c) 2026 DownloadVerse Android contributors. GPL version 3 or, at your option, any later version; without warranty. See COPYING. The original Windows MIT notice remains applicable to that original code.

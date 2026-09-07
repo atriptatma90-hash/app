@@ -1,0 +1,33 @@
+DOWNLOADVERSE ANDROID — SOURCE ZIP, NOT AN APK
+
+NO ANDROID STUDIO IS REQUIRED WHEN USING GITHUB ACTIONS.
+A computer browser is easiest for uploading the project files.
+
+GET THE APK
+1. Extract this ZIP.
+2. Sign in to GitHub and create a repository you control.
+3. Upload the CONTENTS of the DownloadVerse-Android folder to the repository ROOT.
+   Do not upload just the ZIP or nest the project one folder too deep.
+   Include the hidden .github folder. The workflow must be located at:
+   .github/workflows/build-apk.yml
+4. Commit the files to the default branch.
+5. Open Actions > Build Android APK > Run workflow.
+6. Wait for the build and tests to pass.
+7. Open that workflow run. Under Artifacts, download DownloadVerse-debug-apk.
+8. Unzip the artifact. The file ending in .apk is the installable app.
+9. Transfer the .apk to your phone and tap it to open Package Installer.
+
+If prompted, allow Install unknown apps for the Files/browser app opening your
+APK. Keep Play Protect on. You may switch that install permission off afterward.
+
+If the workflow is missing, verify the .github/workflows path above. If your
+browser hides dot-folders, use GitHub > Add file > Create new file, enter that
+complete path and paste the provided workflow content.
+
+If the build fails, no verified APK is ready: keep the error log and have the
+source/native dependency issue fixed. Do NOT rename the source ZIP to .apk.
+
+DEFAULT OUTPUT: signed DEBUG TEST APK, not a production release.
+For stable release updates, use your own persistent signing key (see README.md).
+The build workflow and native Android code have NOT been executed or verified
+in this preparation environment. Real-device testing is still required.
