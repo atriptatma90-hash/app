@@ -256,9 +256,9 @@ class MainActivity:ComponentActivity() {
   ink=Color.parseColor(if(dark)"#F6F5F3" else "#2C2C2B");muted=Color.parseColor(if(dark)"#B4B2AC" else "#66645F");surface=Color.parseColor(if(dark)"#232323" else "#FFFFFF");border=Color.parseColor(if(dark)"#484845" else "#D7D5D1");blue=Color.parseColor(if(dark)"#8CBDFF" else "#246BCB")
   WindowCompat.setDecorFitsSystemWindows(window,false)
   val outer=column().apply { setBackgroundColor(Color.parseColor(if(dark)"#191919" else "#F9F8F7")) }
-  WindowCompat.getInsetsController(window,outer).apply { isAppearanceLightStatusBars=!dark;isAppearanceLightNavigationBars=!dark }
   ViewCompat.setOnApplyWindowInsetsListener(outer) { v,i->val bars=i.getInsets(WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout());val ime=i.getInsets(WindowInsetsCompat.Type.ime());v.setPadding(bars.left,bars.top,bars.right,maxOf(bars.bottom,ime.bottom));i }
   val scroll=ScrollView(this);val body=column().apply { setPadding(dp(20),dp(24),dp(20),dp(24)) };scroll.addView(body);outer.addView(scroll,LinearLayout.LayoutParams(-1,-1));setContentView(outer)
+  runCatching { WindowCompat.getInsetsController(window, window.decorView).apply { isAppearanceLightStatusBars=!dark;isAppearanceLightNavigationBars=!dark } }
   text(body,"DownloadVerse",28f,true);text(body,"Save videos, audio and files on your device.").setTextColor(muted)
   text(body,"Links — one per line",16f,true)
   input=EditText(this).apply { id=View.generateViewId();hint="https://…";textSize=16f;minLines=3;maxLines=8;inputType=InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_MULTI_LINE or InputType.TYPE_TEXT_VARIATION_URI;setTextColor(ink);setHintTextColor(muted);setPadding(dp(12),dp(12),dp(12),dp(12));background=shape(surface) }
